@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>pw-generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class='header'>
+        <a href="/password-generator/"><h1>password-generator</h1></a>
+        <nav>
+            <a href="/password-generator/info/">Info</a>
+        </nav>
+    </div>
+    <div class="container grid">
+    <h2>Password generation process</h2>
+    <p>To ensure the security of passwords, a cryptographically secure pseudo-random number generator (CSPRNG) is utilized via the crypto.getRandomValues() function. The password generation process occurs solely on the front-end (client-side), precluding server-side access to the password.</p>
+    <p>In practice, the getRandomValues() function generates a random number between 0-256. Since the maximum character pool is 0-93, the generated number is used to select one of the characters for the password. However, generating a number outside the character range is highly inefficient as it requires regenerating the number. To optimize this process, the random number range is divided by the character pool to obtain the closest whole number without compromising password randomness. This number is then multiplied by the character pool to acquire the range of acceptable values from the CSPRNG, which is 0-186 in this case. Any generated number outside this range is disregarded, and a new number is generated until an acceptable number is obtained. This process is repeated until the required password length is reached.</p>    
+    <h2>Password Length</h2>
+    <p>The length of a password is a critical factor in its security, but it is not the sole determinant. A password generated using the full character pool may be secure with a length of 12 characters, whereas a numeral password necessitates a length of at least 24 numbers for adequate security. The difficulty of guessing a password increases exponentially with every additional character.</p>
+    <h2>Character Pool</h2>
+    <p>The larger the character pool, the more challenging it is to guess the password. The use of the maximum number of characters results in the most challenging password to crack. However, the difficulty of remembering such a password may be a concern. It is preferable to use a password manager to secure all passwords while keeping one secure password in memory.</p>
+    <h2>Password Entropy</h2>
+    <p>Password entropy is a measure of a password's security. Since the security of a password increases exponentially, the number of potential passwords is converted to bits to represent password entropy. The difference between 40 and 80 bits of entropy is substantial, with the latter requiring approximately 316,887 years to guess. However, a computer can guess a 40-bit entropy password in just 10 seconds. At least 80 bits of entropy are necessary for a password, corresponding to a 12-character password generated using all possible characters (e.g., x+1aUZXSRU%Q).</p>
+    <h2>Bruteforce time</h2>
+    <p>To provide an estimate of password strength, the generator calculates the time required to guess the password via brute force. This time is calculated assuming that there are no limitations on the speed of guessing except for the computer's power. With current technology, 100 billion password guesses per second are feasible. However, beyond a dozen characters, a password is safe for longer than the earth has and will exist. Passwords must become stronger as computing speed improves, but if computing speed grows exponentially, passwords can keep up with the race.</p>
+    </div>
+    
+    
+    
+
+</body>
+</html>
+

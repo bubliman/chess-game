@@ -1,0 +1,60 @@
+.grid {
+    display: grid;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.b {
+    background-color: #5d708f;
+}
+
+.w {
+    background-color: #fff5d8;
+}
+
+.piece > div:hover {
+    cursor: pointer;
+ }
+
+// .b.selected {
+//     background-color: lighten(#5d708f, 30%);
+// }
+
+// .w.selected{
+//     background-color: lighten(#fff5d8, 30%);
+// }
+
+.square > div {
+    width: 100px;
+    height: 100px;
+}
+
+.selected > div {
+    background-color: #ebd64961;
+    
+    -webkit-user-select: auto ; /* Safari */
+    -ms-user-select: auto; /* IE 10 and IE 11 */
+    user-select: auto; /* Standard syntax */
+}
+
+div.hint {
+    width:25px;
+    height:25px;
+    border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.616);
+}
+
+// .wn1 {
+//     position: relative;
+//     top: -200px;
+//     left:100px;
+// }
